@@ -1,3 +1,6 @@
+// Copyright © SixtyFPS GmbH <info@sixtyfps.io>
+// SPDX-License-Identifier: (GPL-3.0-only OR LicenseRef-SixtyFPS-commercial)
+
 import { SpinBox, Button, CheckBox, Slider, LineEdit, ScrollView, ListView, HorizontalBox, VerticalBox, GridBox } from "sixtyfps_widgets.60";
 
 export struct TodoItem := {
@@ -11,7 +14,16 @@ MainWindow := Window {
     callback todo-added(string);
     callback remove-done();
 
-    property <[TodoItem]> todo-model;
+    property <[TodoItem]> todo-model: [
+        { title: "Implement the .60 file", checked: true },
+        { title: "Do the Rust part", checked: false },
+        { title: "Make the C++ code", checked: false },
+        { title: "Write some JavaScript code", checked: false },
+        { title: "Test the application", checked: false },
+        { title: "Ship to customer", checked: false },
+        { title: "???", checked: false },
+        { title: "Profit", checked: false },
+    ];
 
     VerticalBox {
         HorizontalBox {
