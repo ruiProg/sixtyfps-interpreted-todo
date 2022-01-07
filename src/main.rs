@@ -24,10 +24,10 @@ impl TryFrom<Value> for TodoItem {
                     (Some(Value::String(title)), Some(Value::Bool(checked))) => {
                         Ok(TodoItem(title.to_string(), *checked))
                     }
-                    _ => Err("Struct does not have expected fields".into()),
+                    _ => Err("Struct does not have expected fields"),
                 }
             }
-            _ => Err("Not a struct".into()),
+            _ => Err("Not a struct"),
         }
     }
 }
