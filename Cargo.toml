@@ -6,6 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-sixtyfps = { version = "0.1" }
-sixtyfps-interpreter = { version = "0.1", features = ["display-diagnostics"] }
-spin_on = { version = "0.1" }
+sixtyfps = { version = "0.1.5" }
+sixtyfps-interpreter = { version = "0.1.5", features = ["display-diagnostics"] }
+spin_on = { version = "0.1.1" }
