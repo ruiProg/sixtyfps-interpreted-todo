@@ -1,0 +1,54 @@
+import { SpinBox, Button, CheckBox, Slider, LineEdit, ScrollView, ListView, HorizontalBox, VerticalBox, GridBox } from "sixtyfps_widgets.60";
+
+export struct TodoItem := {
+    title: string,
+    checked: bool,
+}
+
+MainWindow := Window {
+    preferred-width: 400px;
+    preferred-height: 600px;
+    callback todo-added(string);
+    callback remove-done();
+
+    property <[TodoItem]> todo-model;
+
+    VerticalBox {
+        HorizontalBox {
+            text-edit := LineEdit {
+                placeholder-text: "What needs to be done?";
+                accepted(text) => {
+                    todo-added(text);
+                    self.text = "";
+                }
+            }
+            btn := Button {
+                text: "Add New Entry";
+                enabled: text-edit.text != "";
+                clicked => {
+                    todo-added(text-edit.text);
+                    text-edit.text = "";
+                }
+            }
+        }
+
+        list-view := ListView {
+            for todo in todo-model:  HorizontalLayout {
+                CheckBox {
+                    text: todo.title;
+                    checked: todo.checked;
+                    toggled => {
+                        todo.checked = checked;
+                    }
+                }
+            }
+        }
+        HorizontalBox {
+            alignment: end;
+            Button {
+                text: "Remove Done Items";
+                clicked => { root.remove-done(); }
+            }
+        }
+    }
+}
