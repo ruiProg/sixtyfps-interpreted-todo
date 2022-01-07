@@ -45,9 +45,9 @@ fn main() {
     ]));
 
     let mut compiler = ComponentCompiler::default();
-
     let definition = spin_on::spin_on(compiler.build_from_path("ui/todo.60"));
     print_diagnostics(&compiler.diagnostics());
+
     if let Some(definition) = definition {
         let instance = definition.create();
 
